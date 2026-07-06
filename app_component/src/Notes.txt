@@ -1,0 +1,65 @@
+TRON
+
+Como vai ser o tron?
+Tipo, eu guardo o estado no jogo numa matriz? Me parece muito mais simples... e infelizmente só consigo pensar assim
+Além disso... Daria pra guardar retas... mas tipo, sei lá;
+O cálculo de tamanho da tela é relativamente simples
+Ok, Gemini me deu o papo : matriz esparsa... Mas tem alguns detalhes
+Quando um player morrer, eu preciso destruir todas as paredes dele. 
+Eu posso armazenar as paredes de cada moto dentro do struct dele!
+
+
+Tem um grid
+#define WIDTH 800
+#define HEIGHT 600
+
+typedef struct Actor_Tron{
+ Coordinate cord;
+ char color [16];
+ int x_direction;
+ int y_direction;
+ float speed;
+ char alive;
+ char COM;
+ Point rastro[MAX_RASTRO]; 
+ int tamanho_rastro;
+} Actor_Tron;
+
+int Actor_count; 
+Actor_Tron actors;
+
+Menu(); 
+
+Timer();
+
+FPS_Generator();  // Acho q funciona assim
+
+Controls{
+
+} 
+typedef struct {
+    int x;
+    int y;
+} Coordinate;
+
+Destroy_Actor_Tron(){
+}
+
+
+Stage mapping?
+
+
+Sprites:
+
+Ahn.................................
+Eu preciso saber o que é um pixel no hdmi.
+Um pixel é definido por 3 valores que vão até 255. RGB. O local na tela não importa, uma vez que isso é arbitrário.
+
+Assumir um sprite de 16x16... Dai teoricamente eu posso redimensionar a vontade.
+
+Mas como guardo informações de valor?????
+tipo
+pixel(R,G,B)
+
+sprite[n][m] = (Ri,Gi,Bi)
+

@@ -1,0 +1,4 @@
+C:/Users/823060/Downloads/workspac1/platform/zynq_fsbl/build/CMakeFiles/fsbl.elf.dir
+C:/Users/823060/Downloads/workspac1/platform/zynq_fsbl/build/CMakeFiles/print_build_info.dir
+C:/Users/823060/Downloads/workspac1/platform/zynq_fsbl/build/CMakeFiles/edit_cache.dir
+C:/Users/823060/Downloads/workspac1/platform/zynq_fsbl/build/CMakeFiles/rebuild_cache.dir
