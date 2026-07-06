@@ -43,7 +43,7 @@
 #define ZYBO_BTN_GPIO_BASEADDR 0x41200000U
 #warning "Using fallback GPIO base address for buttons"
 #endif
-#define ZYBO_BTN_GPIO_CHANNEL 1U
+#define ZYBO_BTN_GPIO_CHANNEL 2U
 
 #define ZYBO_HDMI_WIDTH   640U
 #define ZYBO_HDMI_HEIGHT  480U

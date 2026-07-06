@@ -9,9 +9,13 @@
 
 static DisplayCtrl g_display;
 static XAxiVdma g_vdma;
-static uint8_t g_frame[ZYBO_FRAME_SIZE] __attribute__((aligned(0x20)));
-static uint8_t *g_frames[DISPLAY_NUM_FRAMES] = { g_frame, g_frame, g_frame };
+static uint8_t g_frame0[ZYBO_FRAME_SIZE] __attribute__((aligned(0x20)));
+static uint8_t g_frame1[ZYBO_FRAME_SIZE] __attribute__((aligned(0x20)));
+static uint8_t g_frame2[ZYBO_FRAME_SIZE] __attribute__((aligned(0x20)));
+static uint8_t *g_frames[DISPLAY_NUM_FRAMES] = { g_frame0, g_frame1, g_frame2 };
 static int g_initialized = 0;
+static uint32_t g_present_idx = 0U;
+static uint32_t g_draw_idx = 1U;
 
 static XAxiVdma_Config *zybo_vdma_lookup(uint32_t id_or_base)
 {
@@ -73,26 +77,35 @@ int zybo_video_init(void)
         return -1;
     }
 
+    g_present_idx = 0U;
+    g_draw_idx = 1U;
+    (void)DisplayChangeFrame(&g_display, g_present_idx);
+
     g_initialized = 1;
     return 0;
 }
 
 void zybo_video_fill_rgb(uint8_t r, uint8_t g, uint8_t b)
 {
+    uint8_t *frame = g_frames[g_draw_idx];
     uint32_t i;
     for (i = 0; i < ZYBO_FRAME_SIZE; i += 3) {
-        g_frame[i + 0] = b;
-        g_frame[i + 1] = g;
-        g_frame[i + 2] = r;
+        frame[i + 0] = b;
+        frame[i + 1] = g;
+        frame[i + 2] = r;
     }
 }
 
 uint8_t *zybo_video_framebuffer(void)
 {
-    return g_frame;
+    return g_frames[g_draw_idx];
 }
 
 void zybo_video_flush(void)
 {
-    Xil_DCacheFlushRange((UINTPTR)g_frame, ZYBO_FRAME_SIZE);
+    uint8_t *draw_frame = g_frames[g_draw_idx];
+    Xil_DCacheFlushRange((UINTPTR)draw_frame, ZYBO_FRAME_SIZE);
+    (void)DisplayChangeFrame(&g_display, g_draw_idx);
+    g_present_idx = g_draw_idx;
+    g_draw_idx = (g_present_idx + 1U) % DISPLAY_NUM_FRAMES;
 }

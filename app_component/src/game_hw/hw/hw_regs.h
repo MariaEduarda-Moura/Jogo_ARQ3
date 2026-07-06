@@ -12,7 +12,11 @@
 #define FB_REG_COLOR  0x04u
 #define FB_REG_STATUS 0x08u
 
+#if (ZYBO_BTN_GPIO_CHANNEL == 2U)
+#define KEY_REG_DATA  0x08u
+#else
 #define KEY_REG_DATA  0x00u
+#endif
 
 static inline void mmio_write32(uint32_t addr, uint32_t val)
 {
