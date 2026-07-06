@@ -5,6 +5,7 @@
 #include "render.h"
 #include "enemy.h"
 
+
 Mario mario;
 Camera camera;
 
@@ -46,4 +47,5 @@ void game_update(InputState *input)
 void game_render(void)
 {
     render_frame();
+    
 }

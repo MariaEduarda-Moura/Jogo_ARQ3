@@ -7,6 +7,7 @@
 #include "collision.h"
 #include "gfx.h"
 #include "hw/framebuffer.h"
+#include <sleep.h>
 
 void render_init(void)
 {
@@ -40,6 +41,6 @@ void render_frame(void)
         (int16_t)(mario.y + MARIO_HITBOX_H),
         sprite_for_state((uint8_t)mario.state, mario.anim_frame),
         mario.facing_left);
-
+    usleep(16666);
     fb_present();
 }

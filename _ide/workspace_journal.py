@@ -31,3 +31,23 @@ status = platform.build()
 
 comp.build()
 
+status = platform.build()
+
+comp.build()
+
+status = platform.build()
+
+comp.build()
+
+comp = client.get_component(name="app_component")
+comp.set_app_config(key = "USER_COMPILE_OPTIMIZATION_LEVEL", values = ["-O3"])
+
+status = platform.build()
+
+comp = client.get_component(name="app_component")
+comp.build()
+
+status = platform.build()
+
+comp.build()
+
