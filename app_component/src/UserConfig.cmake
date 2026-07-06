@@ -29,6 +29,8 @@ set(USER_UNDEFINED_SYMBOLS
 set(USER_INCLUDE_DIRECTORIES
 "."
 "./"
+"game_core"
+"game_hw"
 )
 
 #Add any source below, they will be added as Compile sources.
@@ -38,12 +40,23 @@ set(USER_INCLUDE_DIRECTORIES
 set(USER_COMPILE_SOURCES
 "dynclk/dynclk.c"
 "display_ctrl/display_ctrl.c"
-"grid.c"
-"intc/intc.c"
 "main.c"
-"sprites/sprites.c"
-"timer_ps/timer_ps.c"
-"video_capture/video_capture.c"
+"game_core/camera.c"
+"game_core/collision.c"
+"game_core/enemy.c"
+"game_core/game.c"
+"game_core/gfx.c"
+"game_core/input.c"
+"game_core/physics.c"
+"game_core/render.c"
+"game_core/sprites.c"
+"game_core/tile_gfx_table.c"
+"game_core/tiles.c"
+"game_core/world.c"
+"game_hw/zybo_video.c"
+"game_hw/hw/framebuffer.c"
+"game_hw/hw/keys.c"
+"game_hw/hw/timer.c"
 )
 
 # -----------------------------------------
